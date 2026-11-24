@@ -67,7 +67,13 @@ const queries = [
   '"Cursor skills" in:readme stars:>25',
   '"frontend skill" OR "UI UX skill" in:readme stars:>25',
   '"security skill" OR "testing skill" in:readme stars:>25',
-  '"DevOps skill" OR "AI agent skill" in:readme stars:>25'
+  '"DevOps skill" OR "AI agent skill" in:readme stars:>25',
+  '"anti-slop design" OR "anti AI slop" in:readme stars:>10',
+  '"frontend art direction" OR "design engineering skill" in:readme stars:>10',
+  '"UI critique" OR "design system generation" in:readme stars:>10',
+  '"typography" OR "interaction design" OR "motion design" skill in:readme stars:>10',
+  '"visual regression" OR "browser UI inspection" agent skill in:readme stars:>10',
+  '"accessibility auditing" OR "design review" agent skill in:readme stars:>10'
 ];
 
 async function discover() {

@@ -1,18 +1,29 @@
 ---
 name: frontend-design
-description: Design or implement polished web interfaces with a clear visual direction, responsive layouts, and accessible interactions. Use when creating or substantially changing a website or product UI.
+description: Design or substantially change a web interface with a product-specific visual direction, intentional typography and layout, responsive behavior, and accessible interactions. Use for new pages, product UI, and redesigns; the design-intelligence skill routes specialist review when needed.
 ---
 
-# Frontend Design
+# Frontend Design Builder
 
-Make the interface feel intentional and fit the product instead of defaulting to a generic template.
+Build an interface that fits this product and its users. Treat anti-patterns as prompts to examine intent, not rules that forbid a form. Follow a clear user brief and an established brand even when it intentionally uses a familiar pattern.
 
-- Identify the audience, primary task, content hierarchy, and existing design conventions before changing the UI.
-- Choose a coherent visual direction: typography, color, spacing, surface treatment, and image style should support the product's identity.
-- Build the page around real content and task flow. Give the primary action clear priority and avoid decorative elements that compete with it.
-- Make layouts work at narrow and wide viewports. Check text wrapping, navigation, form controls, and overflow at realistic sizes.
-- Use semantic elements and native controls where possible. Preserve keyboard access, visible focus, readable contrast, and reduced-motion preferences.
-- Follow the project's existing framework, component library, and tokens unless the task calls for changing them.
-- When a visual browser or screenshot tool is available, inspect the result and correct visible layout or interaction defects before finishing.
+## Before implementation
 
-For detailed frontend design examples and a maintained upstream skill, see [Anthropic Skills](https://github.com/anthropics/skills/tree/main/skills/frontend-design).
+1. Understand the product, audience, primary user task, content, constraints, and success criteria.
+2. Inspect the existing UI, framework, design tokens, components, responsive rules, and interaction states. Preserve the system when extending it; describe why a redesign is warranted when replacing it.
+3. State a visual direction in concrete terms: visual reference or product world, type roles, palette roles, spacing scale, layout rhythm, image treatment, and one distinctive element. Avoid generic defaults unless the brief supports them.
+4. Plan key states: loading, empty, error, success, hover, focus, disabled, and narrow viewport where applicable.
+
+## Build
+
+- Use real content and the user's task flow to determine hierarchy and layout. Reuse existing components and tokens where they fit.
+- Use semantic HTML and native controls where possible. Give controls useful names, visible focus, and keyboard behavior.
+- Make the layout reflow at realistic widths. Prevent clipped content, horizontal overflow, and unreachable actions.
+- Use images and decoration to explain the product or create a deliberate focal point. Avoid filler visuals and meaningless motion.
+- Respect reduced-motion settings. Motion should communicate state, relation, or hierarchy.
+
+## Review
+
+Run the design director and relevant specialist checks from `design-intelligence` for substantial UI work. When a browser is available, launch the actual application and inspect desktop, tablet, and mobile captures. Correct visible defects, then capture again. A code-only review is not browser verification; label missing evidence clearly.
+
+Finish with a concise summary of the chosen direction, changes, checks actually performed, and unresolved visual checks.

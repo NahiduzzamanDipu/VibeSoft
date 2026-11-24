@@ -25,6 +25,14 @@ node installer/install.mjs --agent cursor --scope project --project ../my-app --
 node installer/install.mjs --agent gemini-cli --scope user --skill modern-web-guidance --dry-run
 ```
 
+For the full first-party design collection, preview the install list before choosing individual skills:
+
+```bash
+node installer/install.mjs --agent codex --scope project --category design-intelligence,ui-ux,design-systems,typography,interaction-design,motion,visual-quality,accessibility,responsive-design,design-review --dry-run
+```
+
+Installing a collection does not mean every instruction should lead every task. Start frontend tasks with `design-intelligence`; it selects one lead skill and at most two specialists. A compact setup can install `design-intelligence,ui-ux,visual-quality,accessibility` and add other focused skills only when needed.
+
 The project scope writes under the selected project’s verified agent skill directory. User scope writes to the current user’s documented skills directory. Review the resolved destination printed by `--dry-run` before continuing.
 
 ## Update and replace
@@ -58,10 +66,11 @@ node installer/install.mjs --agent codex --scope project --skill frontend-design
 ```bash
 npm run validate
 npm test
+npm run catalog:render
 node scripts/catalog.mjs refresh
 GITHUB_TOKEN=... node scripts/catalog.mjs discover
 ```
 
 On PowerShell, set a token only for the current process with `$env:GITHUB_TOKEN = '...'`, run discovery, then remove it with `Remove-Item Env:GITHUB_TOKEN`. GitHub Actions supplies a short-lived token automatically. Never commit a token.
 
-Refresh fetches metadata for the existing candidate list. Discovery creates a dated file under `pending/`; maintainers must inspect candidate files, license, scripts, release pin, compatibility, and quality before review or approval.
+Refresh fetches metadata for the existing candidate list. Discovery creates a dated file under `pending/`; maintainers must inspect candidate files, license, scripts, release pin, compatibility, and quality before review or approval. `npm run catalog:render` regenerates the repository catalog and design scorecard from the manifests.

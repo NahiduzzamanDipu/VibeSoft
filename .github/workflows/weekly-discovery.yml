@@ -26,6 +26,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: node scripts/catalog.mjs discover
+      - name: Regenerate reviewed catalog pages
+        run: npm run catalog:render
       - name: Open review pull request
         env:
           GH_TOKEN: ${{ github.token }}
@@ -38,7 +40,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH_NAME"
-          git add manifest/candidates.json pending/
+          git add manifest/candidates.json pending/ SKILL-CATALOG.md DESIGN-SKILLS.md
           git commit -m "chore: refresh skill discovery queue"
           git push origin "$BRANCH_NAME"
           gh pr create --base main --head "$BRANCH_NAME" \

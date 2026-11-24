@@ -6,8 +6,10 @@ Curated, reusable Agent Skills for Codex, Claude Code, Cursor, Gemini CLI, OpenC
 
 ## What’s included
 
-- Four first-party, instruction-only skills for frontend design, React, modern web guidance, and web app testing.
+- A first-party design intelligence system with one design director, one builder, and focused anti-slop, systems, typography, interaction, motion, visual QA, accessibility, responsive, and critique skills.
+- Engineering and testing skills for React, modern web guidance, web app testing, and full web development workflows.
 - Two first-party workflows for broader web engineering and safe security review.
+- A design scorecard with evidence, limitations, licensing, source commits, maintenance snapshots, compatibility, and role-based routing for 14 specialist candidates.
 - A cross-agent compatibility manifest based on current official documentation.
 - A Node.js installer with explicit agent/scope selection, dry run, safe skip behavior, backups for updates, and ownership-aware uninstall.
 - A GitHub metadata refresh and weekly discovery workflow. New sources enter a pending queue and are never auto-approved or auto-installed.
@@ -37,13 +39,33 @@ node installer/install.mjs --agent codex --scope user --skill frontend-design --
 
 See [INSTALL.md](INSTALL.md) for path details, selection, update, uninstall, and troubleshooting. The installer copies only approved skills shipped in this repository; it does not clone or execute code from third-party repositories.
 
+## Elite design intelligence
+
+For substantial UI work, start with [`design-intelligence`](skills/design-intelligence/SKILL.md). It routes to one lead approach and at most two specialists, resolves conflicts in favor of the user brief and project system, and requires truthful evidence for visual checks. Keep only relevant specialist skills enabled for a task.
+
+| Role | Skill |
+| --- | --- |
+| Design Director / router | [`design-intelligence`](skills/design-intelligence/SKILL.md) |
+| Design Builder | [`frontend-design`](skills/frontend-design/SKILL.md) |
+| Product-specific redesign | [`anti-slop`](skills/anti-slop/SKILL.md) |
+| Tokens and reusable UI | [`design-systems`](skills/design-systems/SKILL.md) |
+| Type and hierarchy | [`typography`](skills/typography/SKILL.md) |
+| Task flows and states | [`interaction-design`](skills/interaction-design/SKILL.md) |
+| Motion | [`animation`](skills/animation/SKILL.md) |
+| Rendered browser QA | [`visual-quality`](skills/visual-quality/SKILL.md) |
+| Accessibility | [`accessibility`](skills/accessibility/SKILL.md) |
+| Responsive behavior | [`responsive-design`](skills/responsive-design/SKILL.md) |
+| Design Critic | [`design-review`](skills/design-review/SKILL.md) |
+
+External candidate packages are evaluated, linked, credited, and kept separate from bundled skills. Read the [design scorecard](DESIGN-SKILLS.md) for capability vectors, evidence, limits, license and source pins. `microsoft/playwright-cli` is classified as a browser verification tool; catalogs and bundles are not treated as design skills.
+
 ## Bundled skills
 
 | Skill | Category | Purpose |
 | --- | --- | --- |
 | [`web-development-workflow`](skills/web-development-workflow/SKILL.md) | Engineering | Architecture, planning, implementation, debugging, review, accessibility, performance, and UI craft |
 | [`security-workflow`](skills/security-workflow/SKILL.md) | Cybersecurity | Secrets, SAST, dependencies, configuration, and authorized web testing |
-| `frontend-design` | UI/UX | Product-aware, responsive, accessible interface design |
+| `frontend-design` and design intelligence specialists | UI/UX | Art direction, focused design roles, rendered QA, accessibility, and responsive review |
 | `react-best-practices` | Engineering | React and Next.js component boundaries, data flow, and performance |
 | `modern-web-guidance` | Engineering | Current platform APIs, progressive enhancement, and browser support |
 | `webapp-testing` | Testing | Scoped verification of browser-visible behavior and responsive states |
@@ -75,7 +97,7 @@ npm run validate
 npm test
 ```
 
-The weekly workflow runs discovery and metadata refresh on a branch and opens a pull request for review. Candidate metrics in the catalog are a dated GitHub REST snapshot and are refreshed by that workflow; they are not a live ranking. Preliminary score weights and review gaps are documented in [DISCOVERY.md](DISCOVERY.md). The display name and repository URL live in [`manifest/config.json`](manifest/config.json).
+The weekly workflow searches broader frontend design topics, refreshes metadata, and opens a pull request for review. Candidate metrics are a dated GitHub REST snapshot, not a live ranking. Metadata ranking does not change the static design scorecard or approval status. See [DISCOVERY.md](DISCOVERY.md) and [DESIGN-SKILLS.md](DESIGN-SKILLS.md). The display name and repository URL live in [`manifest/config.json`](manifest/config.json).
 
 ## Contributing
 

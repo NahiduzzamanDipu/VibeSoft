@@ -5,7 +5,8 @@
   "description": "A safe, cross-agent catalog and installer for reviewed AI development skills.",
   "scripts": {
     "validate": "node scripts/validate.mjs",
-    "catalog:render": "node scripts/render-catalog.mjs",
+    "catalog:render": "node scripts/render-catalog.mjs && node scripts/render-design-evaluations.mjs",
+    "catalog:design": "node scripts/render-design-evaluations.mjs",
     "test": "node --test"
   },
   "engines": {

@@ -7,6 +7,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const skills = JSON.parse(fs.readFileSync(path.join(root, 'manifest', 'skills.json'), 'utf8'));
 const agents = JSON.parse(fs.readFileSync(path.join(root, 'manifest', 'agents.json'), 'utf8'));
 const candidates = JSON.parse(fs.readFileSync(path.join(root, 'manifest', 'candidates.json'), 'utf8'));
+const designScores = JSON.parse(fs.readFileSync(path.join(root, 'manifest', 'design-evaluations.json'), 'utf8'));
 const ids = new Set();
 let errors = 0;
 function fail(message) { console.error(`FAIL ${message}`); errors += 1; }
@@ -40,6 +41,18 @@ for (const repo of candidates.repositories) {
   if (!Number.isInteger(repo.stars) || !Number.isInteger(repo.forks)) fail(`missing popularity snapshot: ${repo.repo}`);
 }
 
+const designRepoIds = new Set();
+for (const review of designScores.repositories) {
+  if (!repoIds.has(review.repo.toLowerCase())) fail(`design evaluation has no candidate metadata: ${review.repo}`);
+  if (designRepoIds.has(review.repo.toLowerCase())) fail(`duplicate design evaluation: ${review.repo}`);
+  designRepoIds.add(review.repo.toLowerCase());
+  if (review.scores.length !== designScores.dimensions_order.length) fail(`wrong score dimensions: ${review.repo}`);
+  if (review.scores.some((score) => !Number.isInteger(score) || score < 0 || score > 5)) fail(`out-of-range design score: ${review.repo}`);
+  if (!/^[a-f0-9]{40}$/.test(review.source_commit)) fail(`missing reviewed source pin: ${review.repo}`);
+  if (!review.class || !review.evidence || !review.limits) fail(`incomplete design evaluation: ${review.repo}`);
+}
+if (designRepoIds.size !== 14) fail(`expected 14 reviewed design candidates; found ${designRepoIds.size}`);
+
 function markdownFiles(folder) {
   const files = [];
   for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {
@@ -65,4 +78,4 @@ for (const file of markdownFiles(root)) {
 }
 
 if (errors) process.exitCode = 1;
-else console.log(`Validated ${skills.skills.length} bundled skills, ${Object.keys(agents.agents).length} agent entries, ${candidates.repositories.length} external repositories, and internal Markdown links.`);
+else console.log(`Validated ${skills.skills.length} bundled skills, ${Object.keys(agents.agents).length} agent entries, ${candidates.repositories.length} external repositories, ${designRepoIds.size} pinned design evaluations, and internal Markdown links.`);
