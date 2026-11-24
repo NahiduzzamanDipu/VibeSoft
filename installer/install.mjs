@@ -100,7 +100,7 @@ function getSkill(id) {
   const skillFile = path.join(source, 'SKILL.md');
   if (!fs.existsSync(skillFile) || !fs.statSync(skillFile).isFile()) throw new Error(`Missing SKILL.md: ${entry.path}`);
   const content = fs.readFileSync(skillFile, 'utf8');
-  if (!content.startsWith('---\n') || !/^name:\s*\S+/m.test(content) || !/^description:\s*\S+/m.test(content)) throw new Error(`Invalid Agent Skills frontmatter: ${entry.path}/SKILL.md`);
+  if (!/^---\r?\n/.test(content) || !/^name:\s*\S+/m.test(content) || !/^description:\s*\S+/m.test(content)) throw new Error(`Invalid Agent Skills frontmatter: ${entry.path}/SKILL.md`);
   return { ...entry, source };
 }
 
