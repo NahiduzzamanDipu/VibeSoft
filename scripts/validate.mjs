@@ -26,7 +26,7 @@ for (const skill of skills.skills) {
   if (!fs.existsSync(file)) fail(`missing SKILL.md: ${skill.id}`);
   else {
     const content = fs.readFileSync(file, 'utf8');
-    if (!content.startsWith('---\n') || !/^name:\s*\S+/m.test(content) || !/^description:\s*\S+/m.test(content)) fail(`invalid frontmatter: ${skill.id}`);
+    if (!/^---\r?\n/.test(content) || !/^name:\s*\S+/m.test(content) || !/^description:\s*\S+/m.test(content)) fail(`invalid frontmatter: ${skill.id}`);
   }
   for (const agent of skill.supported_agents) if (!agents.agents[agent]?.verified) fail(`unsupported agent ${agent} in ${skill.id}`);
 }
