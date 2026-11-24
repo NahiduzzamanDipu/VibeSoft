@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-11-24",
+  "agents": {
+    "codex": {
+      "label": "OpenAI Codex",
+      "verified": true,
+      "project_path": ".agents/skills",
+      "user_path": "${CODEX_HOME:-~/.codex}/skills",
+      "notes": "Uses the Agent Skills SKILL.md format. CODEX_HOME is honored when set."
+    },
+    "claude-code": {
+      "label": "Claude Code",
+      "verified": true,
+      "project_path": ".claude/skills",
+      "user_path": "~/.claude/skills",
+      "notes": "Filesystem-based Agent Skills with SKILL.md."
+    },
+    "cursor": {
+      "label": "Cursor",
+      "verified": true,
+      "project_path": ".cursor/skills",
+      "user_path": null,
+      "notes": "Project skill path verified. This installer does not guess a global path."
+    },
+    "windsurf": {
+      "label": "Windsurf",
+      "verified": false,
+      "project_path": null,
+      "user_path": null,
+      "notes": "Official docs currently document Rules and Workflows, not portable SKILL.md installation. No skill files are installed."
+    },
+    "gemini-cli": {
+      "label": "Gemini CLI",
+      "verified": true,
+      "project_path": ".gemini/skills",
+      "user_path": "~/.gemini/skills",
+      "notes": "Also discovers the shared .agents/skills alias; the explicit Gemini path is used here."
+    },
+    "opencode": {
+      "label": "OpenCode",
+      "verified": true,
+      "project_path": ".opencode/skills",
+      "user_path": "~/.config/opencode/skills",
+      "notes": "Native project and user paths; OpenCode also reads some compatibility directories."
+    },
+    "github-copilot": {
+      "label": "GitHub Copilot",
+      "verified": true,
+      "project_path": ".github/skills",
+      "user_path": "~/.copilot/skills",
+      "notes": "Locations vary by Copilot surface; personal skills are available in Copilot CLI and supported clients."
+    }
+  },
+  "documentation": {
+    "codex": "https://developers.openai.com/api/reference/cli",
+    "claude-code": "https://code.claude.com/docs/en/skills",
+    "cursor": "https://cursor.com/docs/skills",
+    "windsurf": "https://docs.windsurf.com/windsurf/cascade/memories.md",
+    "gemini-cli": "https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/using-agent-skills.md",
+    "opencode": "https://opencode.ai/docs/skills/",
+    "github-copilot": "https://docs.github.com/en/copilot/reference/customization-cheat-sheet"
+  }
+}

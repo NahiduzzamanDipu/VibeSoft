@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "catalog_name": "VibeSoft",
+  "verified_on": "2026-11-24",
+  "categories": ["engineering", "ui-ux", "ai-ml", "devops", "cybersecurity", "testing"],
+  "skills": [
+    {
+      "id": "web-development-workflow",
+      "name": "Web Development Workflow",
+      "description": "Plan, implement, debug, review, and improve production web applications, including architecture, accessibility, performance, and premium UI/UX.",
+      "category": "engineering",
+      "path": "skills/web-development-workflow",
+      "source_repository": "https://github.com/NahiduzzamanDipu/VibeSoft",
+      "source_commit": null,
+      "license": "MIT",
+      "supported_agents": ["codex", "claude-code", "cursor", "gemini-cli", "opencode", "github-copilot"],
+      "security_review": "first-party instruction-only skill; no scripts or external calls",
+      "review_status": "approved",
+      "installable": true
+    },
+    {
+      "id": "security-workflow",
+      "name": "Security Workflow",
+      "description": "Apply local secret detection, SAST, dependency and configuration review, and authorized-only web testing with explicit target scope.",
+      "category": "cybersecurity",
+      "path": "skills/security-workflow",
+      "source_repository": "https://github.com/NahiduzzamanDipu/VibeSoft",
+      "source_commit": null,
+      "license": "MIT",
+      "supported_agents": ["codex", "claude-code", "cursor", "gemini-cli", "opencode", "github-copilot"],
+      "security_review": "first-party instruction-only skill; does not invoke or install scanners",
+      "review_status": "approved",
+      "installable": true
+    },
+    {
+      "id": "frontend-design",
+      "name": "Frontend Design",
+      "description": "Design or implement polished web interfaces with a clear visual direction, responsive layouts, and accessible interactions.",
+      "category": "ui-ux",
+      "path": "skills/frontend-design",
+      "source_repository": "https://github.com/NahiduzzamanDipu/VibeSoft",
+      "source_commit": null,
+      "license": "MIT",
+      "supported_agents": ["codex", "claude-code", "cursor", "gemini-cli", "opencode", "github-copilot"],
+      "security_review": "first-party instruction-only skill; no scripts or external calls",
+      "review_status": "approved",
+      "installable": true
+    },
+    {
+      "id": "react-best-practices",
+      "name": "React Best Practices",
+      "description": "Build or review React and Next.js interfaces with attention to rendering, data flow, performance, and component boundaries.",
+      "category": "engineering",
+      "path": "skills/react-best-practices",
+      "source_repository": "https://github.com/NahiduzzamanDipu/VibeSoft",
+      "source_commit": null,
+      "license": "MIT",
+      "supported_agents": ["codex", "claude-code", "cursor", "gemini-cli", "opencode", "github-copilot"],
+      "security_review": "first-party instruction-only skill; no scripts or external calls",
+      "review_status": "approved",
+      "installable": true
+    },
+    {
+      "id": "modern-web-guidance",
+      "name": "Modern Web Guidance",
+      "description": "Choose current HTML, CSS, and browser platform APIs and account for support and fallbacks.",
+      "category": "engineering",
+      "path": "skills/modern-web-guidance",
+      "source_repository": "https://github.com/NahiduzzamanDipu/VibeSoft",
+      "source_commit": null,
+      "license": "MIT",
+      "supported_agents": ["codex", "claude-code", "cursor", "gemini-cli", "opencode", "github-copilot"],
+      "security_review": "first-party instruction-only skill; no scripts or external calls",
+      "review_status": "approved",
+      "installable": true
+    },
+    {
+      "id": "webapp-testing",
+      "name": "Web App Testing",
+      "description": "Verify web application behavior and responsive UI in a real browser when changing user-facing flows.",
+      "category": "testing",
+      "path": "skills/webapp-testing",
+      "source_repository": "https://github.com/NahiduzzamanDipu/VibeSoft",
+      "source_commit": null,
+      "license": "MIT",
+      "supported_agents": ["codex", "claude-code", "cursor", "gemini-cli", "opencode", "github-copilot"],
+      "security_review": "first-party instruction-only skill; does not run a browser or install dependencies itself",
+      "review_status": "approved",
+      "installable": true
+    }
+  ]
+}

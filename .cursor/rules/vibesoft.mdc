@@ -1,0 +1,6 @@
+---
+description: Safe contribution and installation rules for the VibeSoft Universal AI Skills Hub.
+alwaysApply: true
+---
+
+Read README.md, INSTALL.md, SKILL-CATALOG.md, and SECURITY.md before changing installation or security behavior. Only entries marked approved and installable in manifest/skills.json may be installed. Discovery is metadata-only and must never approve or execute third-party content. Show the destination and plan before writes. Preserve user files; use the backup-aware update flow. Ask before system dependencies or active security testing, and test only explicitly authorized targets.

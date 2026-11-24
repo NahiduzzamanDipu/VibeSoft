@@ -1,0 +1,46 @@
+name: Weekly skill discovery and metadata refresh
+
+on:
+  schedule:
+    - cron: '23 8 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+      - name: Validate repository before discovery
+        run: node scripts/validate.mjs
+      - name: Refresh existing candidate metadata
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/catalog.mjs refresh
+      - name: Queue newly discovered repositories
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/catalog.mjs discover
+      - name: Open review pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH_NAME: catalog/weekly-${{ github.run_id }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No metadata or discovery changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH_NAME"
+          git add manifest/candidates.json pending/
+          git commit -m "chore: refresh skill discovery queue"
+          git push origin "$BRANCH_NAME"
+          gh pr create --base main --head "$BRANCH_NAME" \
+            --title "chore: weekly skill discovery review" \
+            --body "Automated metadata refresh and discovery queue. No candidate has been approved or made installable. Review README/docs, source pin, license, compatibility, scripts, security, and duplication before any catalog promotion."

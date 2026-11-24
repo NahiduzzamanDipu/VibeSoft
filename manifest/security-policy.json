@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "default_install_scope": "project",
+  "third_party_sources_installable_by_default": false,
+  "approval_required_for": [
+    "user-scope writes",
+    "replacing existing skill directories",
+    "system-wide dependencies",
+    "network security scans",
+    "active or intrusive tests"
+  ],
+  "source_policy": {
+    "pin_commit_before_approval": true,
+    "inspect_skill_instructions": true,
+    "inspect_scripts_and_dependencies": true,
+    "verify_license": true,
+    "block_symlinks_in_installer": true,
+    "execute_remote_install_scripts": false
+  },
+  "web_testing": {
+    "authorized_targets_only": true,
+    "require_exact_target_and_scope": true,
+    "deny_brute_force_or_exploitation_by_default": true,
+    "stop_on_unexpected_state_change": true
+  },
+  "review_lifecycle": ["discovered", "analyzed", "security-review", "compatibility-review", "approved", "published"]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "vibesoft-skills-hub",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A safe, cross-agent catalog and installer for reviewed AI development skills.",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "catalog:render": "node scripts/render-catalog.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

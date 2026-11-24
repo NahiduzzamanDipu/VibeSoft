@@ -1,89 +1,86 @@
-# Web Development Agent Skills
+# VibeSoft — Universal AI Skills Hub
 
-An installable, cross-agent starter pack for building and reviewing modern web interfaces. The bundled skills use the open Agent Skills format and work with compatible tools such as Codex, Claude Code, Cursor, and GitHub Copilot.
+Curated, reusable Agent Skills for Codex, Claude Code, Cursor, Gemini CLI, OpenCode, and GitHub Copilot. VibeSoft keeps reviewed skills installable and keeps third-party candidates and security tools separate until a human approves them.
+
+> Give an agent this repository URL and say: **“Read `README.md`, `INSTALL.md`, `SKILL-CATALOG.md`, and `SECURITY.md`. Show me a plan, then install only approved skills for my agent and scope.”**
+
+## What’s included
+
+- Four first-party, instruction-only skills for frontend design, React, modern web guidance, and web app testing.
+- Two first-party workflows for broader web engineering and safe security review.
+- A cross-agent compatibility manifest based on current official documentation.
+- A Node.js installer with explicit agent/scope selection, dry run, safe skip behavior, backups for updates, and ownership-aware uninstall.
+- A GitHub metadata refresh and weekly discovery workflow. New sources enter a pending queue and are never auto-approved or auto-installed.
+- A separate security-tool guide for secrets, SAST, dependency/configuration scans, and authorized web testing.
+
+External repositories in the catalog are linked and credited to their publishers. Their code is not copied or installed by this project. See [the complete source review](SKILL-CATALOG.md).
 
 ## Install
 
-Install every skill in this repository with the [Skills CLI](https://skills.sh/docs/cli):
+Requirements: Node.js 20 or later. Clone the repository, preview the plan, then explicitly approve the write.
 
 ```bash
-npx skills add NahiduzzamanDipu/VibeSoft --all
+git clone https://github.com/NahiduzzamanDipu/VibeSoft.git
+cd VibeSoft
+node installer/install.mjs --agent codex --scope project --category engineering,ui-ux,testing --dry-run
+node installer/install.mjs --agent codex --scope project --category engineering,ui-ux,testing --yes
 ```
 
-To install only selected skills, omit `--all` and select them in the CLI prompt. For one specific skill, use `--skill <name>`:
+For another agent, change `--agent` to `claude-code`, `cursor`, `gemini-cli`, `opencode`, or `github-copilot`. `windsurf` is deliberately not accepted because its current official documentation does not verify `SKILL.md` skill installation.
+
+Install across your user profile only after reviewing the paths and requesting the change:
 
 ```bash
-npx skills add NahiduzzamanDipu/VibeSoft --skill frontend-design
+node installer/install.mjs --agent codex --scope user --skill frontend-design --dry-run
+node installer/install.mjs --agent codex --scope user --skill frontend-design --yes
 ```
 
-The CLI detects supported agents and installs into their skill locations. It does not install unrelated third-party skills automatically; use the upstream install commands below if you want those projects too.
+See [INSTALL.md](INSTALL.md) for path details, selection, update, uninstall, and troubleshooting. The installer copies only approved skills shipped in this repository; it does not clone or execute code from third-party repositories.
 
-## Included skills
+## Bundled skills
 
-| Skill | Use it for |
-| --- | --- |
-| [`frontend-design`](skills/frontend-design/SKILL.md) | Designing or implementing polished, responsive interfaces |
-| [`react-best-practices`](skills/react-best-practices/SKILL.md) | Building or reviewing React and Next.js code |
-| [`modern-web-guidance`](skills/modern-web-guidance/SKILL.md) | Choosing current HTML, CSS, and browser APIs |
-| [`webapp-testing`](skills/webapp-testing/SKILL.md) | Verifying web app behavior in a real browser |
+| Skill | Category | Purpose |
+| --- | --- | --- |
+| [`web-development-workflow`](skills/web-development-workflow/SKILL.md) | Engineering | Architecture, planning, implementation, debugging, review, accessibility, performance, and UI craft |
+| [`security-workflow`](skills/security-workflow/SKILL.md) | Cybersecurity | Secrets, SAST, dependencies, configuration, and authorized web testing |
+| `frontend-design` | UI/UX | Product-aware, responsive, accessible interface design |
+| `react-best-practices` | Engineering | React and Next.js component boundaries, data flow, and performance |
+| `modern-web-guidance` | Engineering | Current platform APIs, progressive enhancement, and browser support |
+| `webapp-testing` | Testing | Scoped verification of browser-visible behavior and responsive states |
 
-## Upstream projects to explore
+## Verified agent support
 
-These active projects provide deeper, separately maintained guidance. Check each project’s license and README before installing it.
-
-| Project | GitHub owner / publisher | Focus | Install |
+| Agent | Project scope | User scope | Status |
 | --- | --- | --- | --- |
-| [Anthropic Skills](https://github.com/anthropics/skills) | [@anthropics](https://github.com/anthropics) | Frontend design and web app testing | `npx skills add anthropics/skills --skill frontend-design webapp-testing` |
-| [Vercel Agent Skills](https://github.com/vercel-labs/agent-skills) | [@vercel-labs](https://github.com/vercel-labs) | React performance and web design guidelines | `npx skills add vercel-labs/agent-skills --skill react-best-practices web-design-guidelines` |
-| [Google Chrome Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance) | [@GoogleChrome](https://github.com/GoogleChrome) | Searchable guidance for current web platform patterns | See the upstream README for its current setup |
-| [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | [@nextlevelbuilder](https://github.com/nextlevelbuilder) | Design systems, styles, and interface patterns | See the upstream README for its current setup |
-| [Taste Skill](https://github.com/Leonxlnx/taste-skill) | [@Leonxlnx](https://github.com/Leonxlnx) | Visual direction and stronger design taste | See the upstream README for its current setup |
-| [Impeccable](https://github.com/pbakaus/impeccable) | [@pbakaus](https://github.com/pbakaus) | Reviewing and refining frontend UX | See the upstream README for its current setup |
+| Codex | `.agents/skills/` | `$CODEX_HOME/skills/` or `~/.codex/skills/` | Verified `SKILL.md` |
+| Claude Code | `.claude/skills/` | `~/.claude/skills/` | Verified `SKILL.md` |
+| Cursor | `.cursor/skills/` | Not installed globally by this tool | Project path verified |
+| Gemini CLI | `.gemini/skills/` | `~/.gemini/skills/` | Verified `SKILL.md`; also supports `.agents/skills/` |
+| OpenCode | `.opencode/skills/` | `~/.config/opencode/skills/` | Verified `SKILL.md` |
+| GitHub Copilot | `.github/skills/` | `~/.copilot/skills/` | Verified, subject to client/surface support |
+| Windsurf | — | — | No verified portable `SKILL.md` destination; use Windsurf Rules/Workflows separately |
 
-## More agent skill repositories
+Paths and caveats are documented in [`manifest/agents.json`](manifest/agents.json), with links to official agent documentation. Agent support changes; confirm the relevant client documentation before relying on an integration.
 
-These additional repositories were shared for this directory. Credits link to each repository’s GitHub owner or publishing organization.
+## Trust and review policy
 
-| Repository | GitHub owner / publisher |
-| --- | --- |
-| [mattpocock/skills](https://github.com/mattpocock/skills) | [@mattpocock](https://github.com/mattpocock) |
-| [obra/superpowers](https://github.com/obra/superpowers) | [@obra](https://github.com/obra) |
-| [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | [@addyosmani](https://github.com/addyosmani) |
-| [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | [@DietrichGebert](https://github.com/DietrichGebert) |
-| [openai/skills](https://github.com/openai/skills) | [@openai](https://github.com/openai) |
-| [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) | [@Graphify-Labs](https://github.com/Graphify-Labs) |
-| [heydamir/unslop](https://github.com/heydamir/unslop) | [@heydamir](https://github.com/heydamir) |
-| [emilkowalski/skills](https://github.com/emilkowalski/skills) | [@emilkowalski](https://github.com/emilkowalski) |
-| [Nutlope/hallmark](https://github.com/Nutlope/hallmark) | [@Nutlope](https://github.com/Nutlope) |
-| [greensock/gsap-skills](https://github.com/greensock/gsap-skills) | [@greensock](https://github.com/greensock) |
-| [hotskillsdev/awesome-agent-skills](https://github.com/hotskillsdev/awesome-agent-skills) | [@hotskillsdev](https://github.com/hotskillsdev) |
-| [Abdalkaderdev/awesome-coding-agent-skills](https://github.com/Abdalkaderdev/awesome-coding-agent-skills) | [@Abdalkaderdev](https://github.com/Abdalkaderdev) |
-| [composio-community/awesome-codex-skills](https://github.com/composio-community/awesome-codex-skills) | [@composio-community](https://github.com/composio-community) |
+Third-party candidates stay `pending`, `catalog-only`, `tool-only`, or `deprecated` until a human reviewer checks the source, pinned commit, license, scripts, dependencies, prompt-injection risks, compatibility, duplicate coverage, and maintenance. Popularity is one signal, not approval. The weekly workflow can update metadata and open a review PR; it cannot promote a candidate into the installable manifest.
 
-## Security and web testing repositories
+Security tools such as Gitleaks, Trivy, Semgrep, ZAP, Nuclei, CodeQL, TruffleHog, Nettacker, Shannon, sqlmap, and Katana are standalone programs, not skills. VibeSoft does not install them. Active scans require explicit authorization for the exact target and scope. Read [SECURITY.md](SECURITY.md) and [the toolkit guide](tools/cybersecurity/README.md).
 
-| Repository | GitHub owner / publisher |
-| --- | --- |
-| [NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector) | [@NVIDIA](https://github.com/NVIDIA) |
-| [projectdiscovery/nuclei](https://github.com/projectdiscovery/nuclei) | [@projectdiscovery](https://github.com/projectdiscovery) |
-| [aquasecurity/trivy](https://github.com/aquasecurity/trivy) | [@aquasecurity](https://github.com/aquasecurity) |
-| [gitleaks/gitleaks](https://github.com/gitleaks/gitleaks) | [@gitleaks](https://github.com/gitleaks) |
-| [zaproxy/zaproxy](https://github.com/zaproxy/zaproxy) | [@zaproxy](https://github.com/zaproxy) |
-| [semgrep/semgrep](https://github.com/semgrep/semgrep) | [@semgrep](https://github.com/semgrep) |
-| [github/codeql](https://github.com/github/codeql) | [@github](https://github.com/github) |
-| [trufflesecurity/trufflehog](https://github.com/trufflesecurity/trufflehog) | [@trufflesecurity](https://github.com/trufflesecurity) |
-| [OWASP/Nettacker](https://github.com/OWASP/Nettacker) | [@OWASP](https://github.com/OWASP) |
-| [KeygraphHQ/shannon](https://github.com/KeygraphHQ/shannon) | [@KeygraphHQ](https://github.com/KeygraphHQ) |
-| [sqlmapproject/sqlmap](https://github.com/sqlmapproject/sqlmap) | [@sqlmapproject](https://github.com/sqlmapproject) |
-| [projectdiscovery/katana](https://github.com/projectdiscovery/katana) | [@projectdiscovery](https://github.com/projectdiscovery) |
+## Maintenance
 
-The list is a curated snapshot, not a live ranking. Upstream projects and their popularity change; check the linked repositories for current releases, compatibility, and instructions.
+```bash
+npm run validate
+npm test
+```
+
+The weekly workflow runs discovery and metadata refresh on a branch and opens a pull request for review. Candidate metrics in the catalog are a dated GitHub REST snapshot and are refreshed by that workflow; they are not a live ranking. Preliminary score weights and review gaps are documented in [DISCOVERY.md](DISCOVERY.md). The display name and repository URL live in [`manifest/config.json`](manifest/config.json).
 
 ## Contributing
 
-Open an issue or pull request with a focused skill, a source repository, and a short explanation of its value. Prefer linking to maintained upstream skills over copying their contents.
+Read [CONTRIBUTING.md](CONTRIBUTING.md). Contributions should be small, sourced, licensed, pinned, and reviewable. No third-party candidate becomes installable solely because an automated scan or popularity score is high.
 
-## License
+## License and attribution
 
-The original files in this repository are released under the MIT License. Upstream projects linked above retain their own licenses.
-
+First-party VibeSoft files are MIT licensed. Linked repositories retain their own code and documentation licenses; see each upstream repository before reuse. The catalog credits each repository owner/publisher. See [LICENSE](LICENSE).
