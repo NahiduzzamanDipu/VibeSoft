@@ -31,14 +31,14 @@ The CLI detects supported agents and installs into their skill locations. It doe
 
 These active projects provide deeper, separately maintained guidance. Check each project’s license and README before installing it.
 
-| Project | Focus | Install |
-| --- | --- | --- |
-| [Anthropic Skills](https://github.com/anthropics/skills) | Frontend design and web app testing | `npx skills add anthropics/skills --skill frontend-design webapp-testing` |
-| [Vercel Agent Skills](https://github.com/vercel-labs/agent-skills) | React performance and web design guidelines | `npx skills add vercel-labs/agent-skills --skill react-best-practices web-design-guidelines` |
-| [Google Chrome Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance) | Searchable guidance for current web platform patterns | See the upstream README for its current setup |
-| [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | Design systems, styles, and interface patterns | See the upstream README for its current setup |
-| [Taste Skill](https://github.com/Leonxlnx/taste-skill) | Visual direction and stronger design taste | See the upstream README for its current setup |
-| [Impeccable](https://github.com/pbakaus/impeccable) | Reviewing and refining frontend UX | See the upstream README for its current setup |
+| Project | GitHub owner / publisher | Focus | Install |
+| --- | --- | --- | --- |
+| [Anthropic Skills](https://github.com/anthropics/skills) | [@anthropics](https://github.com/anthropics) | Frontend design and web app testing | `npx skills add anthropics/skills --skill frontend-design webapp-testing` |
+| [Vercel Agent Skills](https://github.com/vercel-labs/agent-skills) | [@vercel-labs](https://github.com/vercel-labs) | React performance and web design guidelines | `npx skills add vercel-labs/agent-skills --skill react-best-practices web-design-guidelines` |
+| [Google Chrome Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance) | [@GoogleChrome](https://github.com/GoogleChrome) | Searchable guidance for current web platform patterns | See the upstream README for its current setup |
+| [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | [@nextlevelbuilder](https://github.com/nextlevelbuilder) | Design systems, styles, and interface patterns | See the upstream README for its current setup |
+| [Taste Skill](https://github.com/Leonxlnx/taste-skill) | [@Leonxlnx](https://github.com/Leonxlnx) | Visual direction and stronger design taste | See the upstream README for its current setup |
+| [Impeccable](https://github.com/pbakaus/impeccable) | [@pbakaus](https://github.com/pbakaus) | Reviewing and refining frontend UX | See the upstream README for its current setup |
 
 The list is a curated snapshot, not a live ranking. Upstream projects and their popularity change; check the linked repositories for current releases, compatibility, and instructions.
 
